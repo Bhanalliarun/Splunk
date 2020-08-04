@@ -1,6 +1,6 @@
 node {
     stage('SCM checkout') {
-        git 'https://github.com/Bhanalliarun/cicddocker.git'
+        git 'https://github.com/Bhanalliarun/Splunk.git'
     }
 
     stage('Mvn Package'){
@@ -8,7 +8,7 @@ node {
         def mvnCMD = "${mvnHome}/bin/mvn"
         sh "${mvnCMD} clean package"
     }
-	stage('SonarQube Analysis'){
+/*	stage('SonarQube Analysis'){
        def mvnHome =  tool name: 'Maven', type: 'maven'
         withSonarQubeEnv('sonar') { 
         sh "${mvnHome}/bin/mvn sonar:sonar"
@@ -29,6 +29,6 @@ node {
         sshagent(['tomcat-server']) {
         sh "ssh -o StrictHostKeyChecking=no tomcat@34.69.156.222 ${dockerRun}"
         }   
-    }
-    
+    } 
+*/    
 }
